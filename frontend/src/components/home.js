@@ -47,13 +47,13 @@ const Home = () => {
     }}>
 
          {/* Title and Upload Section */}
-      <Box sx={{ mb: 25, textAlign: 'center' }}>
+      <Box sx={{ mb: 17, textAlign: 'center' }}>
         <Typography variant="h3" component="h1" gutterBottom sx={{ fontWeight: 'bold', color: 'primary.main' }}>
           Quebec Fire
         </Typography>
         
         <Box sx={{ 
-          mt: 3, 
+          mt: 10, 
           display: 'flex', 
           gap: 2, 
           justifyContent: 'center',
@@ -65,7 +65,7 @@ const Home = () => {
             variant="outlined"
             onChange={handleFileChange}
             sx={{ 
-                width: '300px',
+                width: '600px',
                 '& .MuiOutlinedInput-root': {
                   height: '50px'
                 }
