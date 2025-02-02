@@ -2,10 +2,11 @@
 import React,{ useState } from 'react';
 import {Card, CardContent, Typography, Box, Stack, Button, Input, createTheme,TextField} from '@mui/material';
 import CloudUploadIcon from '@mui/icons-material/CloudUpload';
-import {  styled, Alert} from '@mui/material';
+import {  styled} from '@mui/material';
 import { Upload } from 'lucide-react';
 import {submitFile} from "../Services/axios";
 import UploadFile from "./UploadFile";
+import {Link} from "react-router-dom";
 
 // Styled components using MUI's styled API
 const UploadBox = styled('div')(({ theme, dragActive }) => ({
@@ -99,7 +100,6 @@ const Home = () => {
 
   return (
     <Box sx={{
-      p: 3,
       maxWidth: 1200,
       mx: 'auto'
     }}>
@@ -194,6 +194,13 @@ const Home = () => {
             </Stack>
           </CardContent>
         </Card>
+      </Box>
+      <Box sx={{
+        textAlign: 'center',
+      }}>
+        <Button variant="contained" component={Link} to="/history">
+          History
+        </Button>
       </Box>
     </Box>
 

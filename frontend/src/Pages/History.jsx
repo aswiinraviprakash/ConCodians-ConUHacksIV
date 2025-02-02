@@ -1,6 +1,8 @@
 import React, {useEffect, useState} from 'react';
 import Table from "../components/Table";
 import {getHistory} from "../Services/axios";
+import {Box, Button} from "@mui/material";
+import {Link} from "react-router-dom";
 
 function History() {
     const columns = [
@@ -28,6 +30,13 @@ function History() {
     return (
         <div>
             <Table columns={columns} rows={rows} />
+            <Box sx={{
+            textAlign: 'center',
+        }}>
+            <Button variant="contained" component={Link} to="/">
+                Back
+            </Button>
+        </Box>
         </div>
     );
 }
