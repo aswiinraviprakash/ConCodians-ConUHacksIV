@@ -17,9 +17,8 @@ damage_costs = {"low": 50000, "medium": 100000, "high": 200000}
 priority_map = {'high': 3, 'medium': 2, 'low': 1}
 
 # method to parse and load wildfire data
-def parse_wildfire_data(file_path):
-    df = pd.read_csv(file_path)
-    
+def parse_wildfire_data(df):
+
     # converting time based values to datetime object
     df['timestamp'] = pd.to_datetime(df['timestamp'])
     df['fire_start_time'] = pd.to_datetime(df['fire_start_time'])

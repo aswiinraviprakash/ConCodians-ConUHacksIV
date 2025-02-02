@@ -22,6 +22,9 @@ class Item(Base):
     low_severity = Column(Integer)
     med_severity = Column(Integer)
     high_severity = Column(Integer)
+    d_low_severity = Column(Integer)
+    d_med_severity = Column(Integer)
+    d_high_severity = Column(Integer)
 
 
 Base.metadata.create_all(bind=engine)

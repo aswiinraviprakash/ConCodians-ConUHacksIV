@@ -1,7 +1,7 @@
-from fastapi import FastAPI, File, UploadFile
+from fastapi import FastAPI, UploadFile
 import pandas as pd
 
-import deployment_calculator
+from backend import deployment_calculator
 
 app = FastAPI()
 
