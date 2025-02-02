@@ -1,6 +1,7 @@
 import axios from 'axios';
 
-const BACKEND_URL = "https://975b-132-205-229-40.ngrok-free.app/";
+
+const BACKEND_URL ="http://127.0.0.1:8000/";
 
 export const getHistory  = async() => {
     //TEMP

@@ -54,22 +54,10 @@ const FilePreview = styled('div')(({ theme }) => ({
 }));
 
 const Home = () => {
-  const [selectedFile, setSelectedFile] = useState(null);
-  const [dragActive, setDragActive] = useState(false);
-  const [error, setError] = useState('');
-
-  const handleDrag = (e) => {
-    e.preventDefault();
-    e.stopPropagation();
-    if (e.type === "dragenter" || e.type === "dragover") {
-      setDragActive(true);
-    } else if (e.type === "dragleave") {
-      setDragActive(false);
-    }
-  };
+ 
 
 
-  const handleUpload = async () => {
+  const handleUpload = async (selectedFile) => {
     if (selectedFile) {
       console.log('Uploading file:', selectedFile);
       const status = await submitFile(selectedFile);
@@ -80,6 +68,7 @@ const Home = () => {
       }
     }
   };
+
 
 
   const data = {
