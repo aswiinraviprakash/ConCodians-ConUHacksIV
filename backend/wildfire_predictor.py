@@ -5,7 +5,7 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import classification_report, accuracy_score
 import joblib
 
-
+# method to load and train the existing data
 def load_and_train_model():
     # Loading datasets
     historical_env_data = pd.read_csv('backend/datasets/historical_environmental_data.csv')
@@ -49,7 +49,7 @@ def load_and_train_model():
 
     joblib.dump(rf_model, 'backend/models/trained_wildfire_model.joblib')
 
-
+# method to predict future wildfires based on past data
 def predict_wildfire(future_env_data):
     # preprocessing the dataset and extracting date information
     future_env_data["timestamp"] = pd.to_datetime(future_env_data["timestamp"])

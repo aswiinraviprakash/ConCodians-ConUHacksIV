@@ -3,7 +3,7 @@ from datetime import datetime
 from backend import resource_calculator, database
 from backend.resource_calculator import deploy_resources
 
-
+# method to write data to DB
 def write_to_db(response):
     db = database.get_db()
     current_time = datetime.now().strftime('%Y-%m-%d %H:%M:%S')

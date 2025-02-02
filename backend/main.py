@@ -46,7 +46,7 @@ async def get_all_history():
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Error while fetching from the DB: {str(e)}")
 
-
+# Endpoint to predict future wildfires
 @app.post("/model/predict")
 async def calculate_from_csv(file: UploadFile):
     try:
