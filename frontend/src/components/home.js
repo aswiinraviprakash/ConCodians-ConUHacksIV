@@ -1,5 +1,8 @@
-import React, { useState } from 'react';
-import { Card, CardContent, Typography, Box, Stack, styled, Alert} from '@mui/material';
+
+import React,{ useState } from 'react';
+import {Card, CardContent, Typography, Box, Stack, Button, Input, createTheme,TextField} from '@mui/material';
+import CloudUploadIcon from '@mui/icons-material/CloudUpload';
+import {  styled, Alert} from '@mui/material';
 import { Upload } from 'lucide-react';
 
 // Styled components using MUI's styled API
@@ -76,6 +79,7 @@ const Home = () => {
       }
   };
 
+
   const handleChange = (e) => {
     if (e.target.files && e.target.files[0]) {
       const file = e.target.files[0];
@@ -130,6 +134,7 @@ const Home = () => {
   };
 
   return (
+
     <Box sx={{ 
       p: 3, 
       maxWidth: 1200, 
@@ -283,7 +288,7 @@ const Home = () => {
           </CardContent>
         </Card>
       </Box>
-    </Box>
+    </div>
   );
 };
 
