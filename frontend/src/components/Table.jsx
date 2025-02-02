@@ -17,12 +17,22 @@ export default function Table({columns, rows}) {
         setPaginationModel(newPaginationModel);
     };
 
+    const cleanRow = rows.map(row => {
+        const cleanedRow = { ...row }; // Copy the original row to avoid mutating the original
+        for (const key in cleanedRow) {
+            if (cleanedRow[key] === null) {
+                cleanedRow[key] = 'NaN'; // Replace null with 'NaN'
+            }
+        }
+        return cleanedRow;
+    });
+
     return (
 
         <Box sx={{ my: 10, textAlign: 'center' }}>
         <Paper sx={{ height: "50%", width: '100%' }}>
             <DataGrid
-                rows={rows}
+                rows={cleanRow}
                 columns={columns}
                 pagination
                 paginationModel={paginationModel} // Controlled pagination
