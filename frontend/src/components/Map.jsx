@@ -17,7 +17,7 @@ const defaultIcon = new L.Icon({
 
 const FitBounds = ({ markerPositions }) => {
     const map = useMap();
-
+//helps to fit the bounds of the map
     useEffect(() => {
         if (markerPositions && markerPositions.length > 0) {
             const validPositions = markerPositions.filter((pos) =>
@@ -42,7 +42,7 @@ const Map = ({markers}) => {
     const markerPositions = markers.map((marker) => marker.position);
 
 
-
+//helps to display the map with the markers
     return (
         <Paper elevation={3} sx={{ padding: 2, borderRadius: 2 }}>
             <Box sx={{ height: '400px' }}>

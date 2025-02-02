@@ -10,10 +10,10 @@ function Navbar() {
             maxWidth: "100%",
         }}>
 
-            {/* Title and Upload Section */}
+            {/* Title Section*/}
             <Box sx={{ textAlign: 'center' }}>
                 <Typography variant="h3" component="h1" gutterBottom sx={{ fontWeight: 'bold', color: 'primary.main' }}>
-                    Quebec Fire
+                    Wildfire Management System
                 </Typography>
             </Box>
                 <Outlet/>

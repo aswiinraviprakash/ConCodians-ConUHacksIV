@@ -6,7 +6,7 @@ import UploadFile from "../components/UploadFile";
 import {trainModel} from "../Services/axios";
 
 
-
+//analyzing the data and predicting the future fire reports
 function Prediction() {
     const [data, setData] = useState([]);
     const [locs, setLocs] = useState([])
@@ -204,9 +204,11 @@ const handleUpload = async (selectedFile) => {
                 <Box sx={{
                     mx: "auto",
                 }}>
+                    {/* displaying the map */}
                     <Map markers={locs} />
                 </Box>
                 {arr?
+                // displaying the table
                     <Box sx={{}}>
                         <Table columns={columns} rows={arr} />
                     </Box>

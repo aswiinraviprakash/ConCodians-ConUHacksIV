@@ -28,6 +28,7 @@ const theme = createTheme({
 
 function Router(props) {
     return (
+        //handling navigation to different pages
         <BrowserRouter>
             <Routes>
                 <Route path="/" element={<Navbar/>} >

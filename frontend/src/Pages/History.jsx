@@ -4,6 +4,7 @@ import {getHistory} from "../Services/axios";
 import {Box, Button} from "@mui/material";
 import {Link} from "react-router-dom";
 
+// for projecting the history of the data
 function History() {
     const columns = [
         {
@@ -129,7 +130,7 @@ function History() {
         },
     ];
 
-
+// for setting the rows required in history page
     const [rows, setRows] = useState( []);
     useEffect(() => {
         getHistory().then((res) => {

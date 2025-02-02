@@ -5,6 +5,7 @@ const BACKEND_URL ="http://localhost:8000/";
 axios.defaults.headers.common['Access-Control-Allow-Origin'] = "*";
 axios.defaults.withCredentials = true;
 
+//gets the history of the fires
 export const getHistory  = async() => {
     //TEMP
     try {
@@ -83,6 +84,7 @@ export const getHistory  = async() => {
 
 }
 
+//uploading the file to calculate the current fire report results
 export const submitFile = async(file) => {
     console.log("File",file);
     const form = new FormData();
@@ -119,6 +121,7 @@ const dummyData = {
     }
 }
 
+//uploading file to predict the future fires 
 export const trainModel = async(file) => {
     console.log("File",file);
     const form = new FormData();

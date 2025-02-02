@@ -27,7 +27,7 @@ export default function Table({columns, rows}) {
         }
         return cleanedRow;
     });
-
+//manage the table data and pagination
     return (
 
         <Box sx={{ my: 10, textAlign: 'center' }}>

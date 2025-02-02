@@ -65,9 +65,6 @@ const [data, setData] = useState();
       if(response.status === 200){
         setCardDisplay(true);
         setData(response.data);
-        //alert
-      }else{
-        //alert
       }
     }
   };
@@ -86,8 +83,6 @@ const [data, setData] = useState();
         <UploadFile onUpload={handleUpload} />
       </Box>
 
-      {/* Rest of your existing code remains the same */}
-      {/* Top Row */}
       <Box sx={{
         display: cardDisplay ? 'grid' : 'none',
         gridTemplateColumns: { xs: '1fr', md: '1fr 1fr' },
@@ -118,8 +113,7 @@ const [data, setData] = useState();
           </CardContent>
         </Card>
       </Box>
-
-      {/* Bottom Row */}
+{/*Card to display the report*/}
       <Box sx={{ 
         display: cardDisplay ? 'grid' : 'none',
         gridTemplateColumns: { xs: '1fr', md: '1fr 1fr' },
@@ -176,6 +170,7 @@ const [data, setData] = useState();
         textAlign: 'center',
         my: "10px",
       }}>
+        {/* To view the previous reports results*/}
         <Button variant="contained" component={Link} to="/history">
           History
         </Button>

@@ -87,6 +87,7 @@ const UploadFile = ({
       }
     }
   };
+  // Handle all the cases in file upload
   const handlers = {
     handleDrag,
     handleDrop,
@@ -94,6 +95,7 @@ const UploadFile = ({
     handleUpload: () => onUpload(selectedFile),
     onErrorClose: () => setError('')
   };
+  // validating uploaded file to accept only csv files
   const validateFile = (file) => {
     if (!file) return false;
     
@@ -112,7 +114,7 @@ const UploadFile = ({
     setError('');
     return true;
   };
-
+//compontent to upload file
   return (
     <Box sx={{ 
       mt: 3,
@@ -120,6 +122,7 @@ const UploadFile = ({
       mx: 'auto'
     }}>
       {error && (
+        // add alert to show error when other files are uploaded
         <Alert 
           severity="error" 
           sx={{ mb: 2 }}
