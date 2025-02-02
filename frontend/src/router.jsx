@@ -2,9 +2,9 @@ import React from 'react';
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 import {createTheme} from "@mui/material";
 import Home from "./components/home";
-import Map from "./components/Map";
 import Navbar from "./components/Navbar";
 import History from "./Pages/History";
+import Prediction from "./Pages/Prediction";
 
 const theme = createTheme({
     palette: {
@@ -36,8 +36,8 @@ function Router(props) {
             <Routes>
                 <Route path="/" element={<Navbar/>} >
                     <Route index element={<Home />} />
-                    <Route path="map" element={<Map markers={locs}/>} />
                     <Route path="history" element={<History/>} />
+                    <Route path="prediction" element={<Prediction markers={locs}/>} />
                     <Route path="*" element={<div>404 Not Found</div>}/>
                 </Route>
 

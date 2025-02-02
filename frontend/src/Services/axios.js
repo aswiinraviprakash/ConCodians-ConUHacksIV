@@ -85,5 +85,5 @@ export const submitFile = async(file) => {
         file: file,
     });
 
-    return res.status;
+    return res;
 }
