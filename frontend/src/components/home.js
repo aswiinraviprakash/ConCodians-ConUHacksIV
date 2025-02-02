@@ -1,5 +1,5 @@
 import React,{ useState } from 'react';
-import {Card, CardContent, Typography, Box, Stack, Button, Input, createTheme} from '@mui/material';
+import {Card, CardContent, Typography, Box, Stack, Button, Input, createTheme,TextField} from '@mui/material';
 import CloudUploadIcon from '@mui/icons-material/CloudUpload';
 
 
@@ -8,9 +8,15 @@ const Home = () => {
 
     const [selectedFile, setSelectedFile] = useState(null);
 
-  const handleFileChange = (event) => {
-    setSelectedFile(event.target.files[0]);
-  };
+    const handleFileChange = (event) => {
+        const file = event.target.files[0];
+        if (file && file.type === 'text/csv') {
+          setSelectedFile(file);
+        } else {
+          alert('Please select a valid CSV file');
+          event.target.value = null; // Reset the input
+        }
+      };
 
   const handleUpload = () => {
     if (selectedFile) {
@@ -41,7 +47,7 @@ const Home = () => {
     }}>
 
          {/* Title and Upload Section */}
-      <Box sx={{ mb: 4, textAlign: 'center' }}>
+      <Box sx={{ mb: 25, textAlign: 'center' }}>
         <Typography variant="h3" component="h1" gutterBottom sx={{ fontWeight: 'bold', color: 'primary.main' }}>
           Quebec Fire
         </Typography>
@@ -51,24 +57,27 @@ const Home = () => {
           display: 'flex', 
           gap: 2, 
           justifyContent: 'center',
-          alignItems: 'center'
+          alignItems: 'center',
+        
         }}>
-          <Input
+           <TextField
             type="file"
-            placeholder="Upload"
+            variant="outlined"
             onChange={handleFileChange}
             sx={{ 
-              flex: '0 1 300px',
-              '& input::placeholder': {
-                color: 'text.secondary'
-              }
-            }}
+                width: '300px',
+                '& .MuiOutlinedInput-root': {
+                  height: '50px'
+                }
+              }}
           />
           <Button
             variant="contained"
+            size="small"
             startIcon={<CloudUploadIcon />}
             onClick={handleUpload}
             disabled={!selectedFile}
+            sx={{ height: '50px' }}
           >
             Upload
           </Button>
