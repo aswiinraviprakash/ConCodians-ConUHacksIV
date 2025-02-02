@@ -5,6 +5,7 @@ import CloudUploadIcon from '@mui/icons-material/CloudUpload';
 import {  styled, Alert} from '@mui/material';
 import { Upload } from 'lucide-react';
 import {submitFile} from "../Services/axios";
+import UploadFile from "./UploadFile";
 
 // Styled components using MUI's styled API
 const UploadBox = styled('div')(({ theme, dragActive }) => ({
@@ -67,28 +68,6 @@ const Home = () => {
     }
   };
 
-  const handleDrop = (e) => {
-    e.preventDefault();
-    e.stopPropagation();
-    setDragActive(false);
-    
-    if (e.dataTransfer.files && e.dataTransfer.files[0]) {
-        const file = e.dataTransfer.files[0];
-        if (validateFile(file)) {
-          setSelectedFile(file);
-        }
-      }
-  };
-
-
-  const handleChange = (e) => {
-    if (e.target.files && e.target.files[0]) {
-      const file = e.target.files[0];
-      if (validateFile(file)) {
-        setSelectedFile(file);
-      }
-    }
-  };
 
   const handleUpload = async () => {
     if (selectedFile) {
@@ -119,17 +98,15 @@ const Home = () => {
   };
 
   return (
-    <Box sx={{ 
-      p: 3, 
-      maxWidth: 1200, 
+    <Box sx={{
+      p: 3,
+      maxWidth: 1200,
       mx: 'auto'
     }}>
       {/* Title and Upload Section */}
-      <Box sx={{ mb: 4, textAlign: 'center' }}>
-        <Typography variant="h3" component="h1" gutterBottom sx={{ fontWeight: 'bold', color: 'primary.main' }}>
-          Quebec Fire
-        </Typography>
-        
+
+        <Box>
+
         <UploadFile onUpload={handleUpload} />
       </Box>
 
@@ -218,7 +195,7 @@ const Home = () => {
           </CardContent>
         </Card>
       </Box>
-</div>
+    </Box>
 
   );
 };
