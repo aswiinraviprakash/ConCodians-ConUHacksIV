@@ -1,7 +1,7 @@
 from fastapi import FastAPI, UploadFile, HTTPException
 import pandas as pd
 
-from backend import deployment_calculator
+from backend import deployment_calculator, wildfire_predictor
 
 app = FastAPI()
 
@@ -26,3 +26,13 @@ async def get_all_history():
         return deployment_calculator.get_history()
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Error while fetching from the DB: {str(e)}")
+
+
+@app.post("/model/predict")
+async def calculate_from_csv(file: UploadFile):
+    try:
+        df = pd.read_csv(file.file)
+        response = wildfire_predictor.predict_wildfire(df)
+        return response
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Error processing file: {str(e)}")

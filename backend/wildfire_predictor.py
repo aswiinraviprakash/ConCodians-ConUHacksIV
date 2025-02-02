@@ -5,8 +5,8 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import classification_report, accuracy_score
 import joblib
 
+
 def load_and_train_model():
-    
     # Loading datasets
     historical_env_data = pd.read_csv('backend/datasets/historical_environmental_data.csv')
     historical_wildfire_data = pd.read_csv("backend/datasets/historical_wildfiredata.csv")
@@ -15,14 +15,14 @@ def load_and_train_model():
     historical_env_data["timestamp"] = pd.to_datetime(historical_env_data["timestamp"])
     historical_wildfire_data["timestamp"] = pd.to_datetime(historical_wildfire_data["timestamp"])
     historical_wildfire_data["fire_start_time"] = pd.to_datetime(historical_wildfire_data["fire_start_time"])
-    
+
     historical_env_data["fire_occurred"] = 0
     for index, fire in historical_wildfire_data.iterrows():
         closest_match = historical_env_data.loc[
-            (historical_env_data["timestamp"] == fire["timestamp"]) & 
-            (historical_env_data["latitude"] == fire["latitude"]) & 
+            (historical_env_data["timestamp"] == fire["timestamp"]) &
+            (historical_env_data["latitude"] == fire["latitude"]) &
             (historical_env_data["longitude"] == fire["longitude"])
-        ]
+            ]
         if not closest_match.empty:
             historical_env_data.loc[closest_match.index, "fire_occurred"] = 1
 
@@ -49,9 +49,8 @@ def load_and_train_model():
 
     joblib.dump(rf_model, 'backend/models/trained_wildfire_model.joblib')
 
-def predict_wildfire():
-    future_env_data = pd.read_csv("/Users/aswiinraviprakash/Desktop/HACKATHON/ConCodians-ConUHacksIV/future_environmental_data.csv")
 
+def predict_wildfire(future_env_data):
     # preprocessing the dataset and extracting date information
     future_env_data["timestamp"] = pd.to_datetime(future_env_data["timestamp"])
     future_env_data["month"] = future_env_data["timestamp"].dt.month
@@ -65,9 +64,4 @@ def predict_wildfire():
     future_predictions = rf_model.predict(X_future)
 
     predicted_fire_locations = future_env_data.loc[future_predictions == 1, ["latitude", "longitude"]]
-    print(predicted_fire_locations)
-    print(len(predicted_fire_locations))
-
-if __name__ == "__main__":
-    load_and_train_model()
-    predict_wildfire()
+    return predicted_fire_locations
