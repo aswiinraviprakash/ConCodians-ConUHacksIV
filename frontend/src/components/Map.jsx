@@ -41,14 +41,12 @@ const Map = ({markers}) => {
 
     const markerPositions = markers.map((marker) => marker.position);
 
-    const position1 = [44.4577, -72.1008];
-    const position2 = [45.8966, -73.4473];
-    const zoomLevel = 13;
+
 
     return (
         <Paper elevation={3} sx={{ padding: 2, borderRadius: 2 }}>
             <Box sx={{ height: '400px' }}>
-                <MapContainer center={position1} zoom={zoomLevel} style={{ height: '100%' }}>
+                <MapContainer style={{ height: '100%' }}>
                     <TileLayer
                         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                     />

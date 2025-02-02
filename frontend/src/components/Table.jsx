@@ -6,6 +6,7 @@ import {Box} from "@mui/material";
 
 
 export default function Table({columns, rows}) {
+    console.log(rows);
 
     const [paginationModel, setPaginationModel] = useState({
         page: 0,
@@ -17,7 +18,7 @@ export default function Table({columns, rows}) {
         setPaginationModel(newPaginationModel);
     };
 
-    const cleanRow = rows.map(row => {
+    const cleanRow = rows?.map(row => {
         const cleanedRow = { ...row }; // Copy the original row to avoid mutating the original
         for (const key in cleanedRow) {
             if (cleanedRow[key] === null) {

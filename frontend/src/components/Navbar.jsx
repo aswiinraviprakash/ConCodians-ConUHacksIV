@@ -3,7 +3,7 @@ import {Box, Button, Card, CardContent, Stack, TextField, Typography} from "@mui
 import CloudUploadIcon from "@mui/icons-material/CloudUpload";
 import {Outlet} from "react-router-dom";
 
-function Navbar(props) {
+function Navbar() {
     return (
         <Box sx={{
             p: 3,
