@@ -55,7 +55,7 @@ const FilePreview = styled('div')(({ theme }) => ({
 }));
 
 const Home = () => {
- 
+  const [cardDisplay, setCardDisplay] = useState(false);
 
 
   const handleUpload = async (selectedFile) => {
