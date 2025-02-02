@@ -16,6 +16,7 @@ def write_to_db(response):
     db.add(history)
     db.commit()
     db.refresh(history)
+    db.close()
     return history
 
 
@@ -44,4 +45,7 @@ def calculate_and_store(df, filename):
 
 
 def get_history():
-    return database.get_db().query(database.Item).all()
+    db = database.get_db()
+    response = db.query(database.Item).all()
+    db.close()
+    return response
