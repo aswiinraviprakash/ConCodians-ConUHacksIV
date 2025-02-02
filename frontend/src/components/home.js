@@ -2,10 +2,11 @@
 import React,{ useState } from 'react';
 import {Card, CardContent, Typography, Box, Stack, Button, Input, createTheme,TextField} from '@mui/material';
 import CloudUploadIcon from '@mui/icons-material/CloudUpload';
-import {  styled, Alert} from '@mui/material';
+import {  styled} from '@mui/material';
 import { Upload } from 'lucide-react';
 import {submitFile} from "../Services/axios";
 import UploadFile from "./UploadFile";
+import {Link} from "react-router-dom";
 
 // Styled components using MUI's styled API
 const UploadBox = styled('div')(({ theme, dragActive }) => ({
@@ -57,7 +58,23 @@ const Home = () => {
   const [selectedFile, setSelectedFile] = useState(null);
   const [dragActive, setDragActive] = useState(false);
   const [error, setError] = useState('');
+  const [data, setData] = useState()
+  const [cardDisplay, setCardDisplay] = useState(false)
 
+  const handleUpload = async () => {
+    if (selectedFile) {
+      console.log('Uploading file:', selectedFile);
+      const response = await submitFile(selectedFile);
+      if(response.status === 200){
+        setCardDisplay(true);
+        setData(response.data);
+
+        //alert
+      }else{
+        //alert
+      }
+    }
+  };
   const handleDrag = (e) => {
     e.preventDefault();
     e.stopPropagation();
@@ -69,37 +86,11 @@ const Home = () => {
   };
 
 
-  const handleUpload = async () => {
-    if (selectedFile) {
-      console.log('Uploading file:', selectedFile);
-      const status = await submitFile(selectedFile);
-      if(status === 200){
-        //alert
-      }else{
-        //alert
-      }
-    }
-  };
 
 
-  const data = {
-    total_operation_cost: 138123,
-    total_fires_addressed: {
-      low: 130,
-      medium: 61,
-      high: 45
-    },
-    total_fires_missed: {
-      low: 17,
-      medium: 11,
-      high: 2
-    },
-    missed_fires_damage_cost: 423645
-  };
 
   return (
     <Box sx={{
-      p: 3,
       maxWidth: 1200,
       mx: 'auto'
     }}>
@@ -113,7 +104,7 @@ const Home = () => {
       {/* Rest of your existing code remains the same */}
       {/* Top Row */}
       <Box sx={{
-        display: 'grid',
+        display: cardDisplay ? 'flex' : 'none',
         gridTemplateColumns: { xs: '1fr', md: '1fr 1fr' },
         gap: 2,
         mb: 2,
@@ -126,7 +117,7 @@ const Home = () => {
               Total Operation Cost
             </Typography>
             <Typography variant="h4">
-              ${data.total_operation_cost.toLocaleString()}
+              ${data?.op_cost.toLocaleString()}
             </Typography>
           </CardContent>
         </Card>
@@ -137,7 +128,7 @@ const Home = () => {
               Missed Fires Damage Cost
             </Typography>
             <Typography variant="h4">
-              ${data.missed_fires_damage_cost.toLocaleString()}
+              ${data?.damage_cost.toLocaleString()}
             </Typography>
           </CardContent>
         </Card>
@@ -145,11 +136,12 @@ const Home = () => {
 
       {/* Bottom Row */}
       <Box sx={{ 
-        display: 'grid',
+        display: cardDisplay ? 'grid' : 'none',
         gridTemplateColumns: { xs: '1fr', md: '1fr 1fr' },
         gap: 2,
         my: '50px',
         mx: "100px",
+
       }}>
         <Card>
           <CardContent>
@@ -159,15 +151,15 @@ const Home = () => {
             <Stack spacing={1} sx={{ mt: 2 }}>
               <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
                 <Typography>Low Priority:</Typography>
-                <Typography fontWeight="bold">{data.total_fires_addressed.low}</Typography>
+                <Typography fontWeight="bold">{data?.low_severity}</Typography>
               </Box>
               <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
                 <Typography>Medium Priority:</Typography>
-                <Typography fontWeight="bold">{data.total_fires_addressed.medium}</Typography>
+                <Typography fontWeight="bold">{data?.med_severity}</Typography>
               </Box>
               <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
                 <Typography>High Priority:</Typography>
-                <Typography fontWeight="bold">{data.total_fires_addressed.high}</Typography>
+                <Typography fontWeight="bold">{data?.high_severity}</Typography>
               </Box>
             </Stack>
           </CardContent>
@@ -181,19 +173,27 @@ const Home = () => {
             <Stack spacing={1} sx={{ mt: 2 }}>
               <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
                 <Typography>Low Priority:</Typography>
-                <Typography fontWeight="bold">{data.total_fires_missed.low}</Typography>
+                <Typography fontWeight="bold">{data?.d_low_severity}</Typography>
               </Box>
               <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
                 <Typography>Medium Priority:</Typography>
-                <Typography fontWeight="bold">{data.total_fires_missed.medium}</Typography>
+                <Typography fontWeight="bold">{data?.d_med_severity}</Typography>
               </Box>
               <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
                 <Typography>High Priority:</Typography>
-                <Typography fontWeight="bold">{data.total_fires_missed.high}</Typography>
+                <Typography fontWeight="bold">{data?.d_high_severity}</Typography>
               </Box>
             </Stack>
           </CardContent>
         </Card>
+      </Box>
+      <Box sx={{
+        textAlign: 'center',
+        my: "10px",
+      }}>
+        <Button variant="contained" component={Link} to="/history">
+          History
+        </Button>
       </Box>
     </Box>
 

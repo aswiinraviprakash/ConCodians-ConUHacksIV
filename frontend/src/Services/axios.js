@@ -81,9 +81,41 @@ export const getHistory  = async() => {
 }
 
 export const submitFile = async(file) => {
-    const res = await axios.post(BACKEND_URL + "resource/calculate", {
+    return await axios.post(BACKEND_URL + "resource/calculate", {
         file: file,
     });
+}
 
-    return res.status;
+const dummyData = {
+    "latitude": {
+        "1027": 44.2365,
+        "1653": 44.4744,
+        "2345": 44.712,
+        "2644": 44.6803,
+        "3169": 45.3978,
+        "3477": 44.6208,
+        "3709": 45.5064,
+        "4758": 44.4955
+    },
+    "longitude": {
+        "1027": -72.1486,
+        "1653": -72.3249,
+        "2345": -73.4962,
+        "2644": -73.7414,
+        "3169": -73.619,
+        "3477": -72.5141,
+        "3709": -72.1042,
+        "4758": -72.5017
+    }
+}
+
+export const trainModel = async() => {
+    // return await axios.post(BACKEND_URL + "model/predict", {
+    //     file: file
+    // })
+    return  Object.keys(dummyData.latitude).map(key => ({
+        id: key,
+        latitude: dummyData.latitude[key],
+        longitude: dummyData.longitude[key]
+    }));
 }
