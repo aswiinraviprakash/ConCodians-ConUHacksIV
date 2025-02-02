@@ -14,25 +14,32 @@ const defaultIcon = new L.Icon({
     shadowUrl: require('leaflet/dist/images/marker-shadow.png'), // Path to the shadow image
     shadowSize: [41, 41], // Size of the shadow
 });
-const markers = [
-    { id: 1, position: [44.4577,	-72.1008], popup: 'Marker 1' },
-    { id: 2, position: [45.8966,	-73.4473], popup: 'Marker 2' },
-    { id: 3, position: [44.7425,	-72.3944], popup: 'Marker 3' },
-];
 
-const markerPositions = markers.map((marker) => marker.position);
-
-const FitBounds = () => {
+const FitBounds = ({ markerPositions }) => {
     const map = useMap();
 
     useEffect(() => {
-        const bounds = L.latLngBounds(markerPositions);
-        map.fitBounds(bounds);
+        if (markerPositions && markerPositions.length > 0) {
+            const validPositions = markerPositions.filter((pos) =>
+                Array.isArray(pos) && pos.length === 2 && !isNaN(pos[0]) && !isNaN(pos[1])
+            );
+
+            if (validPositions.length > 0) {
+                const bounds = L.latLngBounds(validPositions);
+                map.fitBounds(bounds);
+            } else {
+                console.error('Invalid marker positions');
+            }
+        }
     }, [map, markerPositions]);
 
     return null;
 };
-const Map = () => {
+
+const Map = ({markers}) => {
+    console.log(markers);
+
+    const markerPositions = markers.map((marker) => marker.position);
 
     const position1 = [44.4577, -72.1008];
     const position2 = [45.8966, -73.4473];
@@ -51,7 +58,7 @@ const Map = () => {
                             <Popup>{marker.popup}</Popup>
                         </Marker>
                     ))}
-                    <FitBounds />
+                    <FitBounds markerPositions={markerPositions}/>
                 </MapContainer>
             </Box>
         </Paper>
