@@ -55,39 +55,37 @@ const FilePreview = styled('div')(({ theme }) => ({
 }));
 
 const Home = () => {
-  const [selectedFile, setSelectedFile] = useState(null);
-  const [dragActive, setDragActive] = useState(false);
-  const [error, setError] = useState('');
-  const [data, setData] = useState()
-  const [cardDisplay, setCardDisplay] = useState(false)
+ 
 
-  const handleUpload = async () => {
+
+  const handleUpload = async (selectedFile) => {
     if (selectedFile) {
       console.log('Uploading file:', selectedFile);
-      const response = await submitFile(selectedFile);
-      if(response.status === 200){
-        setCardDisplay(true);
-        setData(response.data);
-
+      const status = await submitFile(selectedFile);
+      if(status === 200){
         //alert
       }else{
         //alert
       }
     }
   };
-  const handleDrag = (e) => {
-    e.preventDefault();
-    e.stopPropagation();
-    if (e.type === "dragenter" || e.type === "dragover") {
-      setDragActive(true);
-    } else if (e.type === "dragleave") {
-      setDragActive(false);
-    }
+
+
+
+  const data = {
+    total_operation_cost: 138123,
+    total_fires_addressed: {
+      low: 130,
+      medium: 61,
+      high: 45
+    },
+    total_fires_missed: {
+      low: 17,
+      medium: 11,
+      high: 2
+    },
+    missed_fires_damage_cost: 423645
   };
-
-
-
-
 
   return (
     <Box sx={{
