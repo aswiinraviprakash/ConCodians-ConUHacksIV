@@ -107,6 +107,76 @@ const dummyData = {
         "3477": -72.5141,
         "3709": -72.1042,
         "4758": -72.5017
+    },
+    "timestamp": {
+        "1027": "2025-02-12 19:00:00",
+        "1653": "2025-03-10 21:00:00",
+        "2345": "2025-04-08 17:00:00",
+        "2644": "2025-04-21 04:00:00",
+        "3169": "2025-05-13 01:00:00",
+        "3477": "2025-05-25 21:00:00",
+        "3709": "2025-06-04 13:00:00",
+        "4758": "2025-07-18 06:00:00"
+    },
+    "temperature": {
+        "1027": 38.0,
+        "1653": 40.0,
+        "2345": 34.8,
+        "2644": 38.9,
+        "3169": 38.3,
+        "3477": 35.7,
+        "3709": 39.4,
+        "4758": 35.4
+    },
+    "humidity": {
+        "1027": 10.0,
+        "1653": 10.0,
+        "2345": 14.0,
+        "2644": 26.0,
+        "3169": 28.0,
+        "3477": 13.0,
+        "3709": 31.0,
+        "4758": 28.0
+    },
+    "wind_speed": {
+        "1027": 34.0,
+        "1653": 33.0,
+        "2345": 33.0,
+        "2644": 38.0,
+        "3169": 40.0,
+        "3477": 40.0,
+        "3709": 40.0,
+        "4758": 29.0
+    },
+    "precipitation": {
+        "1027": 0.1,
+        "1653": 1.4,
+        "2345": 0.3,
+        "2644": 1.2,
+        "3169": 0.7,
+        "3477": 0.1,
+        "3709": 0.7,
+        "4758": 0.4
+    },
+    "vegetation_index": {
+        "1027": 58.0,
+        "1653": 71.0,
+        "2345": 78.0,
+        "2644": 68.0,
+        "3169": 80.0,
+        "3477": 60.0,
+        "3709": 79.0,
+        "4758": 76.0
+    },
+    "human_activity_index": {
+        "1027": 97.0,
+        "1653": 95.0,
+        "2345": 76.0,
+        "2644": 77.0,
+        "3169": 98.0,
+        "3477": 86.0,
+        "3709": 99.0,
+        "4758": 94.0
     }
 }
 
@@ -114,9 +184,17 @@ export const trainModel = async() => {
     // return await axios.post(BACKEND_URL + "model/predict", {
     //     file: file
     // })
-    return  Object.keys(dummyData.latitude).map(key => ({
+    return Object.keys(dummyData.latitude).map(key => ({
         id: key,
         latitude: dummyData.latitude[key],
-        longitude: dummyData.longitude[key]
+        longitude: dummyData.longitude[key],
+        timestamp: dummyData.timestamp[key],
+        temperature: dummyData.temperature[key],
+        humidity: dummyData.humidity[key],
+        wind_speed: dummyData.wind_speed[key],
+        precipitation: dummyData.precipitation[key],
+        vegetation_index: dummyData.vegetation_index[key],
+        human_activity_index: dummyData.human_activity_index[key],
     }));
+
 }

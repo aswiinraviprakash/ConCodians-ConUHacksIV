@@ -16,42 +16,74 @@ function Prediction() {
             field: 'id',
             headerName: 'ID',
             flex: 1,
-            headerAlign: 'center',
             align: 'center',
-            headerClassName: 'custom-header',
-            renderCell: (params) => (
-                <span style={{ fontWeight: 'bold', color: '#1976d2' }}>
-                {params.value}
-            </span>
-            )
+            headerAlign: 'center'
         },
         {
             field: 'latitude',
             headerName: 'Latitude',
-            flex: 2,
-            headerAlign: 'center',
+            flex: 1,
             align: 'center',
-            headerClassName: 'custom-header',
-            renderCell: (params) => (
-                <span style={{ color: '#4caf50' }}>
-                {params.value}
-            </span>
-            )
+            headerAlign: 'center'
         },
         {
             field: 'longitude',
             headerName: 'Longitude',
-            flex: 2,
-            headerAlign: 'center',
+            flex: 1,
             align: 'center',
-            headerClassName: 'custom-header',
-            renderCell: (params) => (
-                <span style={{ color: '#f44336' }}>
-                {params.value}
-            </span>
-            )
-        }
+            headerAlign: 'center'
+        },
+        {
+            field: 'timestamp',
+            headerName: 'Timestamp',
+            flex: 2,
+            align: 'center',
+            headerAlign: 'center'
+        },
+        {
+            field: 'temperature',
+            headerName: 'Temperature (°C)',
+            flex: 1,
+            align: 'center',
+            headerAlign: 'center'
+        },
+        {
+            field: 'humidity',
+            headerName: 'Humidity (%)',
+            flex: 1,
+            align: 'center',
+            headerAlign: 'center'
+        },
+        {
+            field: 'wind_speed',
+            headerName: 'Wind Speed (km/h)',
+            flex: 1,
+            align: 'center',
+            headerAlign: 'center'
+        },
+        {
+            field: 'precipitation',
+            headerName: 'Precipitation (mm)',
+            flex: 1,
+            align: 'center',
+            headerAlign: 'center'
+        },
+        {
+            field: 'vegetation_index',
+            headerName: 'Vegetation Index',
+            flex: 1,
+            align: 'center',
+            headerAlign: 'center'
+        },
+        {
+            field: 'human_activity_index',
+            headerName: 'Human Activity Index',
+            flex: 1,
+            align: 'center',
+            headerAlign: 'center'
+        },
     ];
+
 
     useEffect(() => {
         const locs = Object.entries(data).map(([id, { latitude, longitude }], index) => ({
