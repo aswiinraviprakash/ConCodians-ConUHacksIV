@@ -1,7 +1,7 @@
 import React from 'react';
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 import {createTheme, ThemeProvider} from "@mui/material";
-import Home from "./components/home";
+import Home from "./components/Home";
 
 const theme = createTheme({
     palette: {
