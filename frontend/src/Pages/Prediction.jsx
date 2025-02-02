@@ -3,7 +3,7 @@ import Map from "../components/Map";
 import {Box} from "@mui/material";
 import Table from "../components/Table";
 import UploadFile from "../components/UploadFile";
-import {submitFile, trainModel} from "../Services/axios";
+import {trainModel} from "../Services/axios";
 
 
 
@@ -11,6 +11,8 @@ function Prediction() {
     const [data, setData] = useState([]);
     const [locs, setLocs] = useState([])
     const [resultDisplay, setResultDisplay] = useState(false);
+    const [arr, setArr] = useState([])
+
     const columns = [
         {
             field: 'id',
@@ -142,28 +144,52 @@ function Prediction() {
 
 
 
+useEffect(() => {
 
-    useEffect(() => {
-        const locs = Object.entries(data).map(([id, { latitude, longitude }], index) => ({
-            id: index + 1,
-            position: [latitude, longitude],
-            popup: `Marker ${index + 1}`
-        }));
-        setLocs(locs);
-    }, [data])
-    const handleUpload = async (selectedFile) => {
-       
+const locs = data && data.latitude && data.longitude
+    ? Object.keys(data.latitude).map((key, index) => ({
+        id: index + 1,
+        position: [data.latitude[key], data.longitude[key]],
+        popup: `Marker ${index + 1}`
+    }))
+    : [];
+    setLocs(locs)
+    if(data!=null && data.latitude!=null && data.longitude!=null){
+    setArr(Object.keys(data.latitude).map((key) => ({
+        id: Number(key), // Convert string key to a number
+        latitude: data.latitude[key],
+        longitude: data.longitude[key],
+        temperature: data.temperature ? data.temperature[key] : null,
+        humidity: data.humidity ? data.humidity[key] : null,
+        wind_speed: data.wind_speed ? data.wind_speed[key] : null,
+        precipitation: data.precipitation ? data.precipitation[key] : null,
+        vegetation_index: data.vegetation_index ? data.vegetation_index[key] : null,
+        human_activity_index: data.human_activity_index ? data.human_activity_index[key] : null,
+        timestamp: data.timestamp ? data.timestamp[key] : null
+    })))
+    }
+
+}, [data]);
+
+const handleUpload = async (selectedFile) => {
+    try {
         const response = await trainModel(selectedFile);
-        console.log(response);
-        if(response.status === 200){
-            setData(response);
-            setResultDisplay(true);
-            //alert
-          }else{
-            //alert
-          }
-        
-    };
+        if (response.status === 200) {
+            if (response.data && response.data.latitude && response.data.longitude) {
+                setData(response.data);
+                console.log(data);
+                console.log(response);
+                setResultDisplay(true);
+            } else {
+                console.error("Invalid data structure:", response.data);
+            }
+        } else {
+            console.error("Upload failed with status:", response.status);
+        }
+    } catch (error) {
+        console.error("Error uploading file:", error);
+    }
+};
     return (
         <Box sx={{
         }}>
@@ -180,10 +206,13 @@ function Prediction() {
                 }}>
                     <Map markers={locs} />
                 </Box>
-                
+                {arr?
                     <Box sx={{}}>
-                        <Table columns={columns} rows={data} />
+                        <Table columns={columns} rows={arr} />
                     </Box>
+                    : ""
+                }
+
                     
             
                 

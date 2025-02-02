@@ -63,5 +63,21 @@ def predict_wildfire(future_env_data):
     rf_model = joblib.load('backend/models/trained_wildfire_model.joblib')
     future_predictions = rf_model.predict(X_future)
 
-    predicted_fire_locations = future_env_data.loc[future_predictions == 1, ["latitude", "longitude"]]
+    predicted_fire_locations = future_env_data.loc[future_predictions == 1, ["latitude", "longitude", "timestamp",
+                                                                             "temperature","humidity","wind_speed",
+                                                                             "precipitation","vegetation_index",
+                                                                             "human_activity_index"]]
+
+    predicted_fire_locations["latitude"] = predicted_fire_locations["latitude"].astype(float)
+    predicted_fire_locations["longitude"] = predicted_fire_locations["longitude"].astype(float)
+    predicted_fire_locations["temperature"] = predicted_fire_locations["temperature"].astype(float)
+    predicted_fire_locations["humidity"] = predicted_fire_locations["humidity"].astype(float)
+    predicted_fire_locations["wind_speed"] = predicted_fire_locations["wind_speed"].astype(float)
+    predicted_fire_locations["precipitation"] = predicted_fire_locations["precipitation"].astype(float)
+    predicted_fire_locations["vegetation_index"] = predicted_fire_locations["vegetation_index"].astype(float)
+    predicted_fire_locations["human_activity_index"] = predicted_fire_locations["human_activity_index"].astype(float)
+
+    # Ensure the timestamp column is serialized properly
+    predicted_fire_locations["timestamp"] = predicted_fire_locations["timestamp"].dt.strftime('%Y-%m-%d %H:%M:%S')
+
     return predicted_fire_locations
