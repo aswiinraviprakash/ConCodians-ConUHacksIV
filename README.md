@@ -9,7 +9,7 @@ Welcome to the **Wildfire Management System**! 🚒 This platform streamlines wi
 
 
 ## 🛠️ Tech Stack
-- **Frontend:** React, Material UI
+- **Frontend:** React, Material UI, Chart.js
 - **Backend:** Python, FastAPI
 - **Database:** PostgreSQL
 - **Machine Learning:** Python, Pandas, Scikit-learn
