@@ -134,27 +134,18 @@ const Home = () => {
   };
 
   return (
+<div>
 
-    <Box sx={{ 
-      p: 3, 
-      maxWidth: 1200, 
-      mx: 'auto'
-    }}>
-      {/* Title and Upload Section */}
-      <Box sx={{ mb: 4, textAlign: 'center' }}>
-        <Typography variant="h3" component="h1" gutterBottom sx={{ fontWeight: 'bold', color: 'primary.main' }}>
-          Quebec Fire
-        </Typography>
-        
-        <Box sx={{ 
+      <Box>
+        <Box sx={{
           mt: 3,
           maxWidth: 600,
           mx: 'auto'
         }}>
 
 {error && (
-            <Alert 
-              severity="error" 
+            <Alert
+              severity="error"
               sx={{ mb: 2 }}
               onClose={() => setError('')}
             >
@@ -175,12 +166,12 @@ const Home = () => {
               onChange={handleChange}
               accept=".csv"
             />
-            <Upload 
+            <Upload
               size={40}
-              style={{ 
+              style={{
                 marginBottom: '12px',
                 color: dragActive ? '#1976d2' : '#9e9e9e'
-              }} 
+              }}
             />
             <Typography variant="body1" sx={{ mb: 1, color: 'text.secondary' }}>
               <Box component="span" sx={{ fontWeight: 'bold' }}>Click to upload</Box>
@@ -209,11 +200,13 @@ const Home = () => {
 
       {/* Rest of your existing code remains the same */}
       {/* Top Row */}
-      <Box sx={{ 
+      <Box sx={{
         display: 'grid',
         gridTemplateColumns: { xs: '1fr', md: '1fr 1fr' },
         gap: 2,
-        mb: 2 
+        mb: 2,
+        my: '50px',
+        mx: "100px",
       }}>
         <Card>
           <CardContent>
@@ -242,7 +235,9 @@ const Home = () => {
       <Box sx={{ 
         display: 'grid',
         gridTemplateColumns: { xs: '1fr', md: '1fr 1fr' },
-        gap: 2
+        gap: 2,
+        my: '50px',
+        mx: "100px",
       }}>
         <Card>
           <CardContent>
@@ -288,7 +283,8 @@ const Home = () => {
           </CardContent>
         </Card>
       </Box>
-    </div>
+</div>
+
   );
 };
 
