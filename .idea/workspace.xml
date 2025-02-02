@@ -4,11 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bc2023e2-c9c1-40d9-9d5d-c1b6b455dd2f" name="Changes" comment="navbar added :art:">
-      <change afterPath="$PROJECT_DIR$/frontend/src/components/Table.jsx" afterDir="false" />
+    <list default="true" id="bc2023e2-c9c1-40d9-9d5d-c1b6b455dd2f" name="Changes" comment="datatable added :art:">
+      <change afterPath="$PROJECT_DIR$/frontend/src/Pages/History.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/Services/axios.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/Navbar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Navbar.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/Table.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Table.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/router.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/router.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/yarn.lock" afterDir="false" />
     </list>
@@ -20,6 +23,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="JavaScript File" />
         <option value="JSX File" />
       </list>
     </option>
@@ -83,7 +87,7 @@
       <updated>1738452125013</updated>
       <workItem from="1738452126511" duration="125000" />
       <workItem from="1738452375439" duration="3760000" />
-      <workItem from="1738460370819" duration="12355000" />
+      <workItem from="1738460370819" duration="19785000" />
     </task>
     <task id="LOCAL-00001" summary="Router set :tada:">
       <option name="closed" value="true" />
@@ -125,7 +129,15 @@
       <option name="project" value="LOCAL" />
       <updated>1738468238385</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="datatable added :art:">
+      <option name="closed" value="true" />
+      <created>1738474291305</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1738474291305</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -148,6 +160,7 @@
     <MESSAGE value="Map component updated" />
     <MESSAGE value="merge :bug:" />
     <MESSAGE value="navbar added :art:" />
-    <option name="LAST_COMMIT_MESSAGE" value="navbar added :art:" />
+    <MESSAGE value="datatable added :art:" />
+    <option name="LAST_COMMIT_MESSAGE" value="datatable added :art:" />
   </component>
 </project>

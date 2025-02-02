@@ -7,8 +7,7 @@ function Navbar(props) {
     return (
         <Box sx={{
             p: 3,
-            maxWidth: 1200,
-            mx: 'auto'
+            maxWidth: "100%",
         }}>
 
             {/* Title and Upload Section */}
