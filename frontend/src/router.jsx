@@ -3,6 +3,7 @@ import {BrowserRouter, Route, Routes} from "react-router-dom";
 import {createTheme, ThemeProvider} from "@mui/material";
 import Home from "./components/home";
 import Map from "./components/Map";
+import Navbar from "./components/Navbar";
 
 const theme = createTheme({
     palette: {
@@ -32,9 +33,12 @@ function Router(props) {
     return (
         <BrowserRouter>
             <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="map" element={<Map markers={locs}/>} />
-                <Route path="*" element={<div>404 Not Found</div>}/>
+                <Route path="/" element={<Navbar/>} >
+                    <Route index element={<Home />} />
+                    <Route path="map" element={<Map markers={locs}/>} />
+                    <Route path="*" element={<div>404 Not Found</div>}/>
+                </Route>
+
             </Routes>
         </BrowserRouter>
     );

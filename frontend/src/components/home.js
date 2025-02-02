@@ -40,18 +40,8 @@ const Home = () => {
   };
 
   return (
-    <Box sx={{ 
-      p: 3, 
-      maxWidth: 1200, 
-      mx: 'auto'
-    }}>
-
-         {/* Title and Upload Section */}
+    <div>
       <Box sx={{ mb: 17, textAlign: 'center' }}>
-        <Typography variant="h3" component="h1" gutterBottom sx={{ fontWeight: 'bold', color: 'primary.main' }}>
-          Quebec Fire
-        </Typography>
-        
         <Box sx={{ 
           mt: 10, 
           display: 'flex', 
@@ -163,7 +153,7 @@ const Home = () => {
           </CardContent>
         </Card>
       </Box>
-    </Box>
+    </div>
   );
 };
 

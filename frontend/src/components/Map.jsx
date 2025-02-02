@@ -37,7 +37,7 @@ const FitBounds = ({ markerPositions }) => {
 };
 
 const Map = ({markers}) => {
-    console.log(markers);
+
 
     const markerPositions = markers.map((marker) => marker.position);
 
