@@ -55,14 +55,16 @@ const FilePreview = styled('div')(({ theme }) => ({
 }));
 
 const Home = () => {
- 
-
+const[cardDisplay, setCardDisplay] = useState(false);
+const [data, setData] = useState();
 
   const handleUpload = async (selectedFile) => {
     if (selectedFile) {
       console.log('Uploading file:', selectedFile);
-      const status = await submitFile(selectedFile);
-      if(status === 200){
+      const response = await submitFile(selectedFile);
+      if(response.status === 200){
+        setCardDisplay(true);
+        setData(response.data);
         //alert
       }else{
         //alert
@@ -71,24 +73,9 @@ const Home = () => {
   };
 
 
-
-  const data = {
-    total_operation_cost: 138123,
-    total_fires_addressed: {
-      low: 130,
-      medium: 61,
-      high: 45
-    },
-    total_fires_missed: {
-      low: 17,
-      medium: 11,
-      high: 2
-    },
-    missed_fires_damage_cost: 423645
-  };
-
   return (
     <Box sx={{
+        
       maxWidth: 1200,
       mx: 'auto'
     }}>
@@ -102,7 +89,7 @@ const Home = () => {
       {/* Rest of your existing code remains the same */}
       {/* Top Row */}
       <Box sx={{
-        display: cardDisplay ? 'flex' : 'none',
+        display: cardDisplay ? 'grid' : 'none',
         gridTemplateColumns: { xs: '1fr', md: '1fr 1fr' },
         gap: 2,
         mb: 2,
@@ -115,7 +102,7 @@ const Home = () => {
               Total Operation Cost
             </Typography>
             <Typography variant="h4">
-              ${data?.op_cost.toLocaleString()}
+              ${data?.op_cost}
             </Typography>
           </CardContent>
         </Card>
@@ -126,7 +113,7 @@ const Home = () => {
               Missed Fires Damage Cost
             </Typography>
             <Typography variant="h4">
-              ${data?.damage_cost.toLocaleString()}
+              ${data?.damage_cost}
             </Typography>
           </CardContent>
         </Card>

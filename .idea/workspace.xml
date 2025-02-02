@@ -5,12 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bc2023e2-c9c1-40d9-9d5d-c1b6b455dd2f" name="Changes" comment="bugfix :bug:">
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/database.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/database.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/Pages/Prediction.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/Pages/Prediction.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/Services/axios.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/Services/axios.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/components/home.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/home.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

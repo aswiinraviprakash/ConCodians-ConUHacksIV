@@ -61,23 +61,18 @@ function Prediction() {
         }));
         setLocs(locs);
     }, [data])
-    const handleUpload = async () => {
-        // if (selectedFile) {
-        //     console.log('Uploading file:', selectedFile);
-        //     const response = await submitFile(selectedFile);
-        //     if(response.status === 200){
-        //         setCardDisplay(true);
-        //         setData(response.data);
-        //
-        //         //alert
-        //     }else{
-        //         //alert
-        //     }
-        // }
-        const res = await trainModel();
-        console.log(res);
-        setData(res);
-        setResultDisplay(true);
+    const handleUpload = async (selectedFile) => {
+       
+        const response = await trainModel(selectedFile);
+        console.log(response);
+        if(response.status === 200){
+            setData(response);
+            setResultDisplay(true);
+            //alert
+          }else{
+            //alert
+          }
+        
     };
     return (
         <Box sx={{
@@ -95,13 +90,13 @@ function Prediction() {
                 }}>
                     <Map markers={locs} />
                 </Box>
-                {data !== []?
+                
                     <Box sx={{}}>
                         <Table columns={columns} rows={data} />
                     </Box>
-                    :
-                    ""
-                }
+                    
+            
+                
 
             </Box>
 
