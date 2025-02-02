@@ -79,3 +79,12 @@ export const getHistory  = async() => {
     }
 
 }
+
+export const submitFile = async(file) => {
+    const res = await axios.post(BACKEND_URL + "resource/calculate", {
+        id: id,
+        file: file,
+    });
+
+    return res.status;
+}

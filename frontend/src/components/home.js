@@ -4,6 +4,7 @@ import {Card, CardContent, Typography, Box, Stack, Button, Input, createTheme,Te
 import CloudUploadIcon from '@mui/icons-material/CloudUpload';
 import {  styled, Alert} from '@mui/material';
 import { Upload } from 'lucide-react';
+import {submitFile} from "../Services/axios";
 
 // Styled components using MUI's styled API
 const UploadBox = styled('div')(({ theme, dragActive }) => ({
@@ -89,10 +90,15 @@ const Home = () => {
     }
   };
 
-  const handleUpload = () => {
+  const handleUpload = async () => {
     if (selectedFile) {
       console.log('Uploading file:', selectedFile);
-      // Add your upload logic here
+      const status = await submitFile(selectedFile);
+      if(status === 200){
+        //alert
+      }else{
+        //alert
+      }
     }
   };
 
