@@ -4,10 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bc2023e2-c9c1-40d9-9d5d-c1b6b455dd2f" name="Changes" comment="merge :bug:">
-      <change afterPath="$PROJECT_DIR$/frontend/src/components/Navbar.jsx" afterDir="false" />
+    <list default="true" id="bc2023e2-c9c1-40d9-9d5d-c1b6b455dd2f" name="Changes" comment="navbar added :art:">
+      <change afterPath="$PROJECT_DIR$/frontend/src/components/Table.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/router.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/router.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -80,7 +83,7 @@
       <updated>1738452125013</updated>
       <workItem from="1738452126511" duration="125000" />
       <workItem from="1738452375439" duration="3760000" />
-      <workItem from="1738460370819" duration="7388000" />
+      <workItem from="1738460370819" duration="12355000" />
     </task>
     <task id="LOCAL-00001" summary="Router set :tada:">
       <option name="closed" value="true" />
@@ -114,7 +117,15 @@
       <option name="project" value="LOCAL" />
       <updated>1738466907333</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="navbar added :art:">
+      <option name="closed" value="true" />
+      <created>1738468238385</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1738468238385</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -136,6 +147,7 @@
     <MESSAGE value="Map component added with viewport rendered to the available markers" />
     <MESSAGE value="Map component updated" />
     <MESSAGE value="merge :bug:" />
-    <option name="LAST_COMMIT_MESSAGE" value="merge :bug:" />
+    <MESSAGE value="navbar added :art:" />
+    <option name="LAST_COMMIT_MESSAGE" value="navbar added :art:" />
   </component>
 </project>

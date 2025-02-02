@@ -4,6 +4,7 @@ import {createTheme, ThemeProvider} from "@mui/material";
 import Home from "./components/home";
 import Map from "./components/Map";
 import Navbar from "./components/Navbar";
+import Table from "./components/Table";
 
 const theme = createTheme({
     palette: {
@@ -36,6 +37,7 @@ function Router(props) {
                 <Route path="/" element={<Navbar/>} >
                     <Route index element={<Home />} />
                     <Route path="map" element={<Map markers={locs}/>} />
+                    <Route path="history" element={<Table/>} />
                     <Route path="*" element={<div>404 Not Found</div>}/>
                 </Route>
 
