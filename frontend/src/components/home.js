@@ -1,13 +1,105 @@
-import React, { useState } from 'react';
-import { Card, CardContent, Typography, Box, Stack, styled, Alert} from '@mui/material';
-import UploadFile from './UploadFile.js';
 
+import React,{ useState } from 'react';
+import {Card, CardContent, Typography, Box, Stack, Button, Input, createTheme,TextField} from '@mui/material';
+import CloudUploadIcon from '@mui/icons-material/CloudUpload';
+import {  styled, Alert} from '@mui/material';
+import { Upload } from 'lucide-react';
+import {submitFile} from "../Services/axios";
+
+// Styled components using MUI's styled API
+const UploadBox = styled('div')(({ theme, dragActive }) => ({
+  width: '100%',
+  height: 256, // 64 * 4 for similar sizing
+  border: '2px dashed',
+  borderColor: dragActive ? theme.palette.primary.main : theme.palette.grey[300],
+  borderRadius: theme.shape.borderRadius,
+  cursor: 'pointer',
+  backgroundColor: dragActive ? theme.palette.primary.lighter : theme.palette.grey[50],
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'center',
+  justifyContent: 'center',
+  transition: 'all 300ms',
+  position: 'relative',
+  '&:hover': {
+    backgroundColor: theme.palette.grey[100]
+  }
+}));
+
+const UploadButton = styled('button')(({ theme }) => ({
+  marginTop: theme.spacing(2),
+  width: '100%',
+  padding: `${theme.spacing(1.5)} ${theme.spacing(2)}`,
+  backgroundColor: theme.palette.primary.main,
+  color: theme.palette.common.white,
+  borderRadius: theme.shape.borderRadius,
+  fontWeight: 500,
+  border: 'none',
+  cursor: 'pointer',
+  transition: 'background-color 200ms',
+  '&:hover': {
+    backgroundColor: theme.palette.primary.dark
+  }
+}));
+
+const FilePreview = styled('div')(({ theme }) => ({
+  position: 'absolute',
+  bottom: 0,
+  left: 0,
+  right: 0,
+  padding: theme.spacing(2),
+  backgroundColor: theme.palette.common.white,
+  borderTop: `1px solid ${theme.palette.grey[200]}`,
+}));
 
 const Home = () => {
+  const [selectedFile, setSelectedFile] = useState(null);
+  const [dragActive, setDragActive] = useState(false);
+  const [error, setError] = useState('');
 
-const handleUpload = (file) => {
-    console.log('Uploading file:', file);
-    // Add your upload logic here
+  const handleDrag = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    if (e.type === "dragenter" || e.type === "dragover") {
+      setDragActive(true);
+    } else if (e.type === "dragleave") {
+      setDragActive(false);
+    }
+  };
+
+  const handleDrop = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setDragActive(false);
+    
+    if (e.dataTransfer.files && e.dataTransfer.files[0]) {
+        const file = e.dataTransfer.files[0];
+        if (validateFile(file)) {
+          setSelectedFile(file);
+        }
+      }
+  };
+
+
+  const handleChange = (e) => {
+    if (e.target.files && e.target.files[0]) {
+      const file = e.target.files[0];
+      if (validateFile(file)) {
+        setSelectedFile(file);
+      }
+    }
+  };
+
+  const handleUpload = async () => {
+    if (selectedFile) {
+      console.log('Uploading file:', selectedFile);
+      const status = await submitFile(selectedFile);
+      if(status === 200){
+        //alert
+      }else{
+        //alert
+      }
+    }
   };
 
 
